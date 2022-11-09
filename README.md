@@ -1,2 +1,2 @@
 # Page_object_practice
-Some Page object practice projects
+Some practice with page object
