@@ -33,6 +33,7 @@ class ProductPage(BasePage):
         '''Возвращает имя товара в корзине'''
         item_in_cart = self.browser.find_element(*ProductPageLocators.NAME_OF_PRODUCT_IN_MESSAGE).text
         return item_in_cart
+    
 
     def get_name_of_product(self):
         '''Возвращает имя товара'''
@@ -48,3 +49,11 @@ class ProductPage(BasePage):
         '''Возвращает цену товара в корзине'''
         item_price_in_cart = self.browser.find_element(*ProductPageLocators.CART_PRICE).text
         return item_price_in_cart
+    
+    def should_not_be_success_message(self):
+        '''Проверяем, что нет сообщения об успехе'''
+        assert self.is_not_element_present(*ProductPageLocators.MESSAGE_ABOUT_ADDING_PRODUCT),"Success message is presented, but should not be"
+
+    def success_message_disappeared(self):
+        '''Проверяем,что сообщение об успешном добавлении товара в корзину исчезло'''
+        assert self.is_disappeared(*ProductPageLocators.MESSAGE_ABOUT_ADDING_PRODUCT),"Success message is presented, but should not be"
