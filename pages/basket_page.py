@@ -5,6 +5,7 @@ from selenium.common.exceptions import TimeoutException
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.support.ui import WebDriverWait
 
+
 class BasketPage(BasePage):
 
     def is_element_present(self, how, what):
@@ -23,8 +24,12 @@ class BasketPage(BasePage):
         return False
 
     def should_not_be_items_in_basket(self):
-        '''Проверка,что в корзине нет товаров'''
+        """Проверка,что в корзине нет товаров"""
         assert self.is_not_element_present(*BasketPageLocators.BASKET_ITEMS), "Basket is not empty"
+
+    def should_be_text_that_basket_is_empty(self):
+        """Проверка наличия сообщения ,что корзина пуста"""
+        assert self.is_element_present(*BasketPageLocators.BASKET_IS_EMPTY_MESSAGE), "Message about empty basket is not presented"
 
 
 
